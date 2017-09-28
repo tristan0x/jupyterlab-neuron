@@ -1,0 +1,14 @@
+version: '2.2'
+services:
+  jupyterlab:
+    image: tristan0x/jupyterlab-neuron
+    build: .
+    network_mode: host
+    environment:
+    - USER_LOGIN=$USER
+    - USER_ID=$UID
+    - GROUP_ID=$GID
+    - SSH_AUTH_SOCK=/ssh_agent
+    volumes:
+    - $PWD/notebooks:/opt/src/notebooks
+    - $SSH_AUTH_SOCK:/ssh_agent
