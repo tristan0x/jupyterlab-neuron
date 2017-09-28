@@ -16,13 +16,25 @@ To retrieve the Docker image, you can either download it from Docker Hub or buil
 
 ### Pull from Docker Hub
 
+You only need the Docker Compose configuration to get started:
 ```bash
-git clone https://github.com/tristan0x/jupyterlab-neuron.git
+mkdir jupyterlab-neuron
 cd jupyterlab-neuron
+wget https://raw.githubusercontent.com/tristan0x/jupyterlab-neuron/master/docker-compose.yml
 docker-compose pull
 ```
 
+Optionally you can also retrieve the demo Python notebook:
+```
+mkdir notebooks
+cd notebooks
+wget https://raw.githubusercontent.com/tristan0x/jupyterlab-neuron/master/notebooks/single-neuron-DetAMPAStim.ipynb
+```
+
 ### Build manually
+
+You need to clone this repository to retrieve the necessary to build the Docker
+image:
 
 ```bash
 git clone https://github.com/tristan0x/jupyterlab-neuron.git
