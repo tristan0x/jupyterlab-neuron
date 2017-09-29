@@ -74,10 +74,11 @@ ENV PATH "/opt/nrn/x86_64/bin:$PATH"
 ENV LANG en_US.utf8
 
 ADD entrypoint /usr/bin/
-
 ENTRYPOINT ["/usr/bin/entrypoint"]
+
 CMD [ \
     "jupyter", "lab", \
     "--no-browser", "--allow-root", \
     "--notebook-dir=/opt/src/notebooks" \
 ]
+
