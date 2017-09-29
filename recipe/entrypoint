@@ -8,9 +8,9 @@
 # https://stackoverflow.com/questions/41857462
 
 if [ "x$GROUP_ID" = x -o "x$USER_ID" = x ] ;then
-	echo 'Error: $USERID and $GROUP_ID environment variable not set' >&2
-	echo Abort >&2
-	exit 1
+    echo 'Error: $USERID and $GROUP_ID environment variable not set' >&2
+    echo Abort >&2
+    exit 1
 fi
 
 # Create fake user
@@ -27,16 +27,18 @@ chown -R dummy:dummy /home/dummy
 
 # Grants write permissions to some paths
 for path in /.jupyter /.local /opt/src ; do
-	mkdir -p "$path"
-	chmod 777 "$path"
-	chmod +t "$path"
+    mkdir -p "$path"
+    chmod 777 "$path"
+    chmod +t "$path"
 done
 
+# Run the given command as root if bash or sh,
+# the fake user otherwise.
 case "$1" in
-	sh|bash)
-		exec $@
-		;;
-	*)
-		gosu dummy "$@"
-		;;
+    sh|bash)
+        exec $@
+        ;;
+    *)
+        gosu dummy "$@"
+        ;;
 esac
