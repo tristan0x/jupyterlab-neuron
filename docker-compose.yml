@@ -2,7 +2,7 @@ version: '2.2'
 services:
   jupyterlab:
     image: tristan0x/jupyterlab-neuron
-    build: .
+    build: recipe
     network_mode: host
     environment:
     - USER_LOGIN=$USER
