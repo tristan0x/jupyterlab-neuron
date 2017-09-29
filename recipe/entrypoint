@@ -3,7 +3,7 @@
 # Create fake user and group with the same ids than
 # the host user, and use its identity all along
 # in the container so that all created files in
-# mounted volumes with belong to the host user.
+# mounted volumes belongs to the host user.
 #
 # https://stackoverflow.com/questions/41857462
 
