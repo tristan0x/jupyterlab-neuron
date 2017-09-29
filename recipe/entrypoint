@@ -7,6 +7,12 @@
 #
 # https://stackoverflow.com/questions/41857462
 
+if [ "x$GROUP_ID" = x -o "x$USER_ID" = x ] ;then
+	echo 'Error: $USERID and $GROUP_ID environment variable not set' >&2
+	echo Abort >&2
+	exit 1
+fi
+
 # Create fake user
 grep -q ^dummy: /etc/group || groupadd -g $GROUP_ID dummy
 grep -q ^dummy: /etc/passwd || useradd -u $USER_ID -g $GROUP_ID dummy
