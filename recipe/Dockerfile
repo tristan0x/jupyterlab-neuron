@@ -1,14 +1,35 @@
 FROM fedora:25
 MAINTAINER Tristan CAREL <tristan.carel@epfl.ch>
 
-RUN echo 'check-update' ; dnf check-update -yv \
- && echo 'distro-sync' ; dnf distro-sync -yv \
- && echo 'install C Dev' ; dnf group install -yv 'C Development Tools and Libraries' \
- && echo 'install dDev tools'; dnf group install -yv 'Development Tools' \
- && dnf install -y wget bzip2 bzip2-devel libXext libSM libXrender cmake \
-                   graphviz hdf5 hdf5-devel fftw-libs fftw-devel \
-                   ncurses ncurses-libs ncurses-devel readline readline-devel \
-                   hostname libgomp pandoc
+RUN echo 'check-update' \
+ ;  dnf check-update -yv \
+ ;  echo 'distro-sync' \
+ ;  dnf distro-sync -yv \
+ ;  echo 'install C Dev Tools' \
+ ;  dnf group install -yv 'C Development Tools and Libraries' \
+ && echo 'install Dev tools' \
+ && dnf group install -yv 'Development Tools' \
+ && dnf install -y \
+    bzip2 \
+    bzip2-devel \
+    cmake \
+    fftw-devel \
+    fftw-libs \
+    graphviz \
+    hdf5 \
+    hdf5-devel \
+    hostname \
+    libgomp \
+    libSM \
+    libXext \
+    libXrender \
+    ncurses \
+    ncurses-devel \
+    ncurses-libs \
+    pandoc \
+    readline \
+    readline-devel \
+    wget
 
 ENV GOSU_VERSION 1.10
 RUN set -ex; \
@@ -27,15 +48,13 @@ RUN set -ex; \
 
 ARG MINICONDA_VERSION=2-4.3.21
 
-RUN echo 'export PATH=/opt/conda/bin:$PATH' > /etc/profile.d/conda.sh && \
-    wget --quiet https://repo.continuum.io/miniconda/Miniconda${MINICONDA_VERSION}-Linux-x86_64.sh -O ~/miniconda.sh && \
-    /bin/bash ~/miniconda.sh -b -p /opt/conda && \
-    rm ~/miniconda.sh
+RUN echo 'export PATH=/opt/conda/bin:$PATH' > /etc/profile.d/conda.sh \
+ && wget --quiet https://repo.continuum.io/miniconda/Miniconda${MINICONDA_VERSION}-Linux-x86_64.sh -O ~/miniconda.sh \
+ && /bin/bash ~/miniconda.sh -b -p /opt/conda \
+ && rm ~/miniconda.sh \
+ && /opt/conda/bin/pip install jupyterlab matplotlib
 
-ENV PATH /opt/conda/bin:$PATH
-ENV LANG en_US.utf8
-
-RUN pip install jupyterlab matplotlib
+ENV PATH "/opt/conda/bin:$PATH"
 
 # Install Neuron
 RUN git clone https://github.com/nrnhines/nrn.git /opt/src/nrn \
@@ -49,8 +68,10 @@ RUN git clone https://github.com/nrnhines/nrn.git /opt/src/nrn \
      --without-iv \
  && make \
  && make install
+
 ENV PYTHONPATH /opt/nrn/lib/python
 ENV PATH "/opt/nrn/x86_64/bin:$PATH"
+ENV LANG en_US.utf8
 
 ADD entrypoint /usr/bin/
 
