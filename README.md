@@ -1,8 +1,24 @@
-# JupyterLab / NEURON / Docker Proof Of Concept
+# Run NEURON from JupyterLab inside a Docker container
 
 This repository provides the Docker recipe to build an image providing
 a JupyterLab environment with NEURON bindings.
-It also contains a sample notebook, provided by @sharkovsky as a courtesy.
+It also contains a sample notebook, provided by
+[@sharkovsky](https://github.com/sharkovsky) as a courtesy.
+
+Jupyter Lab is started when the Docker container starts. The container
+has the following specifities:
+* content of `./notebooks` directory is mount in the container in
+`/opt/src/notebooks` (the Jupyter Lab root directory).
+* files created within the container in this directory will belong to the
+  user on the host machine.
+* SSH identity in the host is available in the container so that a
+  Jupyter notebooks in the container are able to fetch private resources  available through SSH protocol.
+
+The repository provides a Jupyter notebook that:
+1. downloads public Allen Cell Types Database model
+1. downloads a private model to highlight features described above
+1. builds NEURON C files with `nrnivmodl`
+1. runs a simulation
 
 ## Requirements
 
