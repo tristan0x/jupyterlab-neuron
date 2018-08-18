@@ -126,12 +126,8 @@ not actually exported by your shell?
     ```bash
     $ echo $UID
     188063
-    $ python -c "import os ; print os.environ['UID']"
-    Traceback (most recent call last):
-      File "<string>", line 1, in <module>
-      File "/home/tcarel/src/github.com/pyenv/pyenv/versions/2.7.13/lib/python2.7/UserDict.py", line 40, in __getitem__
-        raise KeyError(key)
-    KeyError: 'UID'
+    $  python2 -c "import os; print 'UID' in os.environ"
+    False
     ```
 
 ## License
