@@ -7,9 +7,17 @@
 #
 # https://stackoverflow.com/questions/41857462
 
-if [ "x$GROUP_ID" = x -o "x$USER_ID" = x ] ;then
-    echo 'Error: $USERID and $GROUP_ID environment variable not set' >&2
-    echo Abort >&2
+env=1
+if [ "x$USER_ID" = x ] ; then
+    echo Error: USER_ID environment variable is not set 2>&1
+    env=0
+fi
+if [ "x$GROUP_ID" = x ] ; then
+    echo Error: GROUP_ID environment variable is not set 2>&1
+    env=0
+fi
+if [ $env = 0 ] ; then
+    echo Abort >&1
     exit 1
 fi
 
