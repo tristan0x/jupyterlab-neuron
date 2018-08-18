@@ -85,31 +85,29 @@ You can register additional SSH keys to the agent with the `ssh-add /path/to/pri
 Now you can use `docker-compose` to start the container:
 
 ```bash
-export UID GID
+export UID GID=`id -g`
 docker-compose up jupyterlab
-Recreating bbpjupyterlab_jupyterlab_1 ...
-Recreating bbpjupyterlab_jupyterlab_1 ... done
-Attaching to bbpjupyterlab_jupyterlab_1
-jupyterlab_1      | [I 12:06:29.489 LabApp] Writing notebook server cookie secret to /home/dummy/.local/share/jupyter/runtime/notebook_cookie_secret
-jupyterlab_1      | [W 12:06:29.503 LabApp] JupyterLab server extension not enabled, manually loading...
-jupyterlab_1      | [I 12:06:29.503 LabApp] JupyterLab alpha preview extension loaded from /opt/conda/lib/python2.7/site-packages/jupyterlab
-jupyterlab_1      | JupyterLab v0.27.0
-jupyterlab_1      | Known labextensions:
-jupyterlab_1      | [I 12:06:29.504 LabApp] Running the core application with no additional extensions or settings
-jupyterlab_1      | [I 12:06:29.506 LabApp] Serving notebooks from local directory: /opt/src/notebooks
-jupyterlab_1      | [I 12:06:29.506 LabApp] 0 active kernels
-jupyterlab_1      | [I 12:06:29.506 LabApp] The Jupyter Notebook is running at:
-jupyterlab_1      | [I 12:06:29.506 LabApp] http://localhost:8888/?token=fbf49d09731a046e874888ca5baf40f453e171660d0fd01f
-jupyterlab_1      | [I 12:06:29.506 LabApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
-jupyterlab_1      | [C 12:06:29.506 LabApp]
-jupyterlab_1      |
-jupyterlab_1      |     Copy/paste this URL into your browser when you connect for the first time,
-jupyterlab_1      |     to login with a token:
-jupyterlab_1      |         http://localhost:8888/?token=fbf49d09731a046e874888ca5baf40f453e171660d0fd01f
+Creating jupyterlabneuron_jupyterlab_1 ... done
+Attaching to jupyterlabneuron_jupyterlab_1
+jupyterlab_1  | [I 06:52:11.383 LabApp] Writing notebook server cookie secret to /home/dummy/.local/share/jupyter/runtime/notebook_cookie_secret
+jupyterlab_1  | [I 06:52:11.581 LabApp] JupyterLab extension loaded from /opt/conda/lib/python2.7/site-packages/jupyterlab
+jupyterlab_1  | [I 06:52:11.581 LabApp] JupyterLab application directory is /opt/conda/share/jupyter/lab
+jupyterlab_1  | [W 06:52:11.586 LabApp] JupyterLab server extension not enabled, manually loading...
+jupyterlab_1  | [I 06:52:11.587 LabApp] JupyterLab extension loaded from /opt/conda/lib/python2.7/site-packages/jupyterlab
+jupyterlab_1  | [I 06:52:11.587 LabApp] JupyterLab application directory is /opt/conda/share/jupyter/lab
+jupyterlab_1  | [I 06:52:11.590 LabApp] Serving notebooks from local directory: /opt/src/notebooks
+jupyterlab_1  | [I 06:52:11.591 LabApp] The Jupyter Notebook is running at:
+jupyterlab_1  | [I 06:52:11.591 LabApp] http://localhost:8888/?token=e1fc2e039ca063ba873abe87e6d97f1f94086b9fbcc83ff5
+jupyterlab_1  | [I 06:52:11.591 LabApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+jupyterlab_1  | [C 06:52:11.591 LabApp]
+jupyterlab_1  |
+jupyterlab_1  |     Copy/paste this URL into your browser when you connect for the first time,
+jupyterlab_1  |     to login with a token:
+jupyterlab_1  |         http://localhost:8888/?token=e1fc2e039ca063ba873abe87e6d97f1f94086b9fbcc83ff5
 ```
 
 Then open your web browser at the provided HTTP address. In this case
-http://localhost:8888/?token=fbf49d09731a046e874888ca5baf40f453e171660d0fd01f
+http://localhost:8888/?token=e1fc2e039ca063ba873abe87e6d97f1f94086b9fbcc83ff5
 
 ## Behind the Hood
 
