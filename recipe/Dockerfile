@@ -1,4 +1,4 @@
-FROM fedora:25
+FROM fedora:27
 MAINTAINER Tristan CAREL <tristan.carel@epfl.ch>
 
 RUN echo 'check-update' \
