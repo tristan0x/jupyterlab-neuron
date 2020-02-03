@@ -58,6 +58,12 @@ cd jupyterlab-neuron
 docker-compose build
 ```
 
+   You can safely ignore the following warnings because the variable is only used by the containers.
+   ```
+   WARNING: The UID variable is not set. Defaulting to a blank string.
+   WARNING: The GID variable is not set. Defaulting to a blank string.
+   ```
+
 ## Basic Usage
 
 To start a JupyterLab Docker container, you must first ensure that
